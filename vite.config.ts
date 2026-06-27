@@ -4,7 +4,13 @@ import path from 'path';
 import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
+  // Support dynamic base path for GitHub Pages deployment
+  const base = process.env.GITHUB_ACTIONS 
+    ? `/${process.env.VITE_BASE_PATH || ''}/`.replace(/\/+/g, '/')
+    : '/';
+
   return {
+    base,
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
