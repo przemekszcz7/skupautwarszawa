@@ -1,0 +1,6 @@
+{
+  "name": "Skup Aut Warszawa",
+  "description": "Skup aut Warszawa i okolice 50 km. Kupujemy każde auto do 15 000 zł, w każdym stanie, bez OC i przeglądu. Gotówka od ręki. Działamy 24/7.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

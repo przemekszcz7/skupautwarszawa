@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&family=Barlow+Condensed:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+:root {
+  --black:       #090C10;   /* prawie czarny — tło główne */
+  --dark:        #111418;   /* tło sekcji alternatywnych */
+  --card:        #181C22;   /* karty i kontenery */
+  --border:      rgba(255,255,255,0.12);  /* subtelne linie, teraz wyraźniejsze i bielsze */
+  --border-mid:  rgba(255,255,255,0.22);
+  --white:       #FFFFFF;   /* czysta, idealna biel tekstów głównych i nagłówków */
+  --gray:        #A3AAB2;   /* jasny szary — znacznie czytelniejszy, dający więcej jasności */
+  --gray-light:  #E2E8F0;   /* bardzo jasny szary — prawie biały */
+  --accent:      #D93025;   /* czerwony — jedyny kolor, akcent 24/7 */
+  --accent-dark: #A8231A;   /* ciemniejszy czerwony na hover */
+  --accent-glow: rgba(217,48,37,0.15);  /* bardzo subtelna poświata */
+  --steel:       #2A3040;   /* chłodny granat — separator, tło elementów */
+}
+
+@theme {
+  --color-black: var(--black);
+  --color-dark: var(--dark);
+  --color-card: var(--card);
+  --color-border-custom: var(--border);
+  --color-border-mid: var(--border-mid);
+  --color-white-custom: var(--white);
+  --color-gray-custom: var(--gray);
+  --color-gray-light: var(--gray-light);
+  --color-accent-custom: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-glow: var(--accent-glow);
+  --color-steel: var(--steel);
+
+  --font-sans: "Barlow", sans-serif;
+  --font-condensed: "Barlow Condensed", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Grid Mesh background for Hero */
+.hero-mesh {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Animations */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.15; }
+}
+
+@keyframes expand-line {
+  0%, 100% { width: 60px; }
+  50% { width: 100px; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 1.5s ease infinite;
+}
+
+.animate-expand-line {
+  animation: expand-line 2s ease infinite;
+}
+
+/* Marquee continuous container */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  width: 100%;
+}
+
+.marquee-content {
+  display: inline-flex;
+  gap: 2rem;
+  animation: marquee 25s linear infinite;
+  padding-right: 2rem;
+}
+
+/* Reveal transition classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
